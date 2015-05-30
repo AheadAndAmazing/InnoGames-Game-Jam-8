@@ -7,7 +7,7 @@ public class WorldCreation : MonoBehaviour {
 	private IDictionary<int, Obstacle> obstaclePool = new Dictionary<int, Obstacle>();
 	
 	private const float WORLDTILELENGTH = 100;
-	private const float SPEEDINCREASE = 0.01f;
+	private const float SPEEDINCREASE = 0.5f;
 	
 	public WorldTile ModulePrefab;
 	public Obstacle[] Obstacles;
@@ -29,6 +29,7 @@ public class WorldCreation : MonoBehaviour {
 			//TODO: Add Obstacles
 			MoveWorldTileToNewPosition();
 		}
+		WorldTile.Speed += SPEEDINCREASE * Time.deltaTime;
 	}
 	
 	private WorldTile MoveWorldTileToNewPosition()
@@ -38,7 +39,7 @@ public class WorldCreation : MonoBehaviour {
 		Vector3 newTilePos = new Vector3(tileToMove.transform.position.x, tileToMove.transform.position.y, tileToMove.transform.position.z + WORLDTILELENGTH * 2);
 		tileToMove.transform.position = newTilePos;
 		currentWorldTiles.Add(tileToMove);
-		WorldTile.Speed += SPEEDINCREASE;
+
 		return tileToMove;
 	}
 	

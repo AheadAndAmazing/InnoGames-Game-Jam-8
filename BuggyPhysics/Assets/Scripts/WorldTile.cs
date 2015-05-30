@@ -4,7 +4,7 @@ using System.Collections;
 public class WorldTile : MonoBehaviour {
 
 	public Transform[] ObstacleSpawnPoints;
-	private const float MAXSPEED = 20.0f;
+	private const float MAXSPEED = 50.0f;
 	
 	public static float Speed { 
 		get { return speed; } 
@@ -21,6 +21,5 @@ public class WorldTile : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		this.transform.Translate(0.0f, 0.0f, -Speed * Time.deltaTime);
-		
 	}
 }

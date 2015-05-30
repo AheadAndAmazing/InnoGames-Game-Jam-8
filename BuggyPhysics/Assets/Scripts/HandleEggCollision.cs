@@ -17,6 +17,7 @@ public class HandleEggCollision : MonoBehaviour {
 	{
 		if (other.tag == "Kugel") {
 			other.transform.parent = this.transform;
+			other.attachedRigidbody.isKinematic = true;
 		}
 	}
 }

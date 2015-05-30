@@ -21,7 +21,7 @@ public class ScoreCounter : MonoBehaviour {
 	string directory;
 	string path;
 
-	List<string> highScoreList = new List<string>();
+	List<int> highScoreList = new List<int>();
 
 	// Use this for initialization
 	void Start () 
@@ -68,32 +68,25 @@ public class ScoreCounter : MonoBehaviour {
 			File.CreateText (path).Dispose ();
 		}
 
-
-		StreamReader reader = new StreamReader (path);
-		bool fileEnded = false;
-		while (fileEnded) {
-			if(highScoreList[highScoreList.Count] != null)
-			{
-				highScoreList.Add(reader.ReadLine());
-			}
-			else
-			{
-				fileEnded = true;
-			}
+		string[] highScoreArray = File.ReadAllLines (path);
+		for (int i=0; i<highScoreArray.Length; i++) {
+			highScoreList.Add(int.Parse(highScoreArray[i]));
 		}
-		reader.Close ();
+		highScoreList.Add ((int) score);
 
+		highScoreList.Sort ();
+		highScoreList.Reverse ();
+
+		File.Create (path).Close ();
 
 		asset = Resources.Load(FileName + ".txt") as TextAsset;
 		writer = new StreamWriter(path, true);
-		writer.WriteLine(score.ToString());
+		print ("Saved Highscores: "+highScoreList.Count);
+		foreach(int scoreString in highScoreList)
+		{
+			writer.WriteLine(scoreString);
+		}
 		writer.Close ();
-
-
-		reader = new StreamReader (path);
-		print ("Highscore recorded: "+reader.ReadToEnd ());
-		reader.Close ();
-
 	}
 	
 }

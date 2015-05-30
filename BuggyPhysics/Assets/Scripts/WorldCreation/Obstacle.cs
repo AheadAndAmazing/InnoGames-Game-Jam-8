@@ -15,6 +15,7 @@ public class Obstacle : MonoBehaviour {
 		{
 			point.OccupyingObstacle = this;
 			occupiedSpawns.Add(point);
+			this.transform.parent = point.transform;
 			return true;
 		}
 		return false;

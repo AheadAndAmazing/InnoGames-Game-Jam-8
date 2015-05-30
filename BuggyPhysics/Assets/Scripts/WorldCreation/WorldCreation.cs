@@ -44,7 +44,8 @@ public class WorldCreation : MonoBehaviour {
 		tileToMove.transform.position = newTilePos;
 		currentWorldTiles.Add(tileToMove);
 		FreeObstacleFromWorldTile(tileToMove);
-
+		
+		AddObstaclesToWorldTile(tileToMove, CurrentDifficultyLvl);
 		return tileToMove;
 	}
 	

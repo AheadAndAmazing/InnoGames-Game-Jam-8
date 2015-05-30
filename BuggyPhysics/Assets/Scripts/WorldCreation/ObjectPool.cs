@@ -51,27 +51,44 @@ public class ObjectPool : MonoBehaviour {
 	{
 		IList<GameObject> curList;
 		this.pooledObjects.TryGetValue(type, out curList);
+		//this.pooledObjects.
 
-		for (int i = 0; i < pooledObjects.Count; i++)
+		if(type == PrefabTypes.WorldTile)
 		{
-			if(!curList[i].activeInHierarchy)
+			for (int i = 0; i < pooledObjects.Count; i++)
 			{
-				return curList[i];
+				if (!worldTiles[i].activeInHierarchy)
+				{
+					return worldTiles[i];
+				}
 			}
 		}
+		else
+		{
+			for (int i = 0; i < pooledObjects.Count; i++)
+			{
+				if (!obstacles[i].activeInHierarchy)
+				{
+					return obstacles[i];
+				}
+			}
+		}
+		
 		if(WillGrow)
 		{
 			GameObject obj;
 			if (type == PrefabTypes.WorldTile)
 			{
 				obj = (GameObject)Instantiate(PooledObject[(int)type]);
-				curList.Add(obj);
+				worldTiles.Add(obj);
 			}
 			else
 			{
 				obj = (GameObject)Instantiate(PooledObject[Random.Range(1, PooledObject.Length)]);
-				curList.Add(obj);
+				obstacles.Add(obj);
 			}
+			obj.SetActive(false);
+			this.pooledObjects[type] = curList;
 			return obj;
 		}
 		return null;

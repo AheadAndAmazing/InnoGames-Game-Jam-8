@@ -9,7 +9,8 @@ public class WorldCreation : MonoBehaviour {
 	private const float WORLDTILELENGTH = 100;
 	private const float SPEEDINCREASE = 0.5f;
 
-	public static int CurrentDifficultyLvl = 1;
+	public static int CurrentDifficultyLvl { get { return curDiff; } set { curDiff = Mathf.Clamp(value, 0, 5); } }
+	private static int curDiff = 1;
 	
 	public GameObject PlayerObject;
 	
@@ -23,6 +24,10 @@ public class WorldCreation : MonoBehaviour {
 		currentWorldTiles.Add(startTile);
 		currentWorldTiles.Add(followTile);
 		currentWorldTiles.Add(endTile);
+		AddObstaclesToWorldTile(startTile, CurrentDifficultyLvl);
+		AddObstaclesToWorldTile(followTile, CurrentDifficultyLvl);
+		AddObstaclesToWorldTile(endTile, CurrentDifficultyLvl);
+		
 	}
 	
 	// Update is called once per frame
@@ -35,7 +40,7 @@ public class WorldCreation : MonoBehaviour {
 		}
 		WorldTile.Speed += SPEEDINCREASE * Time.deltaTime;
 	}
-	
+
 	private WorldTile MoveWorldTileToNewPosition()
 	{
 		WorldTile tileToMove = currentWorldTiles[0];
@@ -46,6 +51,7 @@ public class WorldCreation : MonoBehaviour {
 		FreeObstacleFromWorldTile(tileToMove);
 		
 		AddObstaclesToWorldTile(tileToMove, CurrentDifficultyLvl);
+		CurrentDifficultyLvl++;
 		return tileToMove;
 	}
 	
@@ -70,14 +76,12 @@ public class WorldCreation : MonoBehaviour {
 
 	private void AddObstaclesToWorldTile(WorldTile tile, int obstacleLvlPoints)
 	{
-		while(obstacleLvlPoints >= 1)
-		{
-			int ChooseSpawnCluster = Random.Range(0, tile.ObstacleSpawnPoints.Length);
-			int ChooseStartSpawnPoint = Random.Range(0, tile.ObstacleSpawnPoints[ChooseSpawnCluster].spawnPoints.Length);
-			int obstacleCost = SpawnObstacle(tile.ObstacleSpawnPoints[ChooseSpawnCluster].spawnPoints[ChooseStartSpawnPoint], tile);
-			obstacleLvlPoints -= obstacleCost;
-		}
-
+		for (int i = 0; i < obstacleLvlPoints; i++)
+			{
+				int ChooseSpawnCluster = Random.Range(0, tile.ObstacleSpawnPoints.Length);
+				int ChooseStartSpawnPoint = Random.Range(0, tile.ObstacleSpawnPoints[ChooseSpawnCluster].spawnPoints.Length);
+				int obstacleCost = SpawnObstacle(tile.ObstacleSpawnPoints[ChooseSpawnCluster].spawnPoints[ChooseStartSpawnPoint], tile);
+			}
 	}
 
 	private int SpawnObstacle( SpawnPoint point, WorldTile tile)
@@ -93,32 +97,10 @@ public class WorldCreation : MonoBehaviour {
 			tile.PlacedObstacles.Add(obs);
 			obstacleCost = obs.ObstacleDifficulty;
 		}
+		else
+		{
+
+		}
 		return obstacleCost;
 	}
-
-	//private int SpawnObstacle(SpawnPoint point, WorldTile tile)
-	//{
-	//	int obstacleCost = 0;
-	//	if(point.OccupyingObstacle == null)
-	//	{
-	//		Obstacle spawned;
-	//		if(this.pooledObstacles.Count > 0)
-	//		{
-	//			spawned = pooledObstacles[Random.Range(0, pooledObstacles.Count)];
-	//			spawned.gameObject.SetActive(true);
-	//		}
-	//		else
-	//		{
-	//			spawned = GameObject.Instantiate<Obstacle>(Obstacles[Random.Range(0, Obstacles.Length)]);
-	//		}
-
-	//		spawned.transform.position = point.transform.position;
-	//		spawned.transform.SetParent(point.transform);
-	//		point.OccupyingObstacle = spawned;
-	//		tile.PlacedObstacles.Add(spawned);
-	//		obstacleCost = spawned.ObstacleDifficulty;
-	//	}
-
-	//	return obstacleCost;
-	//}
 }

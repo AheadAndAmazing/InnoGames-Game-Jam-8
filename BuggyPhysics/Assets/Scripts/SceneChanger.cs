@@ -3,9 +3,14 @@ using System.Collections;
 
 public class SceneChanger : MonoBehaviour {
 
+	public GameObject splashScreen;
+
 	public void StartGame()
 	{
-		Application.LoadLevel("Scene1");
+		if (!splashScreen.activeInHierarchy) {
+			Application.LoadLevel("Scene1");
+		}
+
 	}
 
 	public void ExitGame()

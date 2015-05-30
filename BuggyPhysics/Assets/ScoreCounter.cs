@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 public class ScoreCounter : MonoBehaviour {
@@ -17,11 +18,17 @@ public class ScoreCounter : MonoBehaviour {
 	bool scoreScreenWasShown = false;
 
 	public string FileName;
+	string directory;
+	string path;
+
+	List<string> highScoreList = new List<string>();
 
 	// Use this for initialization
 	void Start () 
 	{
 		text = this.GetComponent<Text> ();
+		directory = "Resources/";
+		path = directory + FileName + ".txt";
 	}
 	
 	// Update is called once per frame
@@ -44,19 +51,49 @@ public class ScoreCounter : MonoBehaviour {
 			gameOverText.enabled = true;
 			scoreText.enabled = true;
 			scoreText.text += score.ToString ();
+
+			updateHighscoreList(score);
 		}
 	}
 
 	void updateHighscoreList(float score)
 	{
-		 // This contains the name of the file. Don't add the ".txt"
-		// Assign in inspector
-		TextAsset asset; // Gets assigned through code. Reads the file.
-		StreamWriter writer; // This is the writer that writes to the file
+		TextAsset asset;
+		StreamWriter writer;
+
+		if (!File.Exists (path)) {
+			if (!Directory.Exists (directory)) {
+				Directory.CreateDirectory (directory);
+			}
+			File.CreateText (path).Dispose ();
+		}
+
+
+		StreamReader reader = new StreamReader (path);
+		bool fileEnded = false;
+		while (fileEnded) {
+			if(highScoreList[highScoreList.Count] != null)
+			{
+				highScoreList.Add(reader.ReadLine());
+			}
+			else
+			{
+				fileEnded = true;
+			}
+		}
+
+		reader.Close ();
+
 
 		asset = Resources.Load(FileName + ".txt") as TextAsset;
-		writer = new StreamWriter("Resources/" + FileName + ".txt"); // Does this work?
+		writer = new StreamWriter(path, true);
 		writer.WriteLine(score.ToString());
+		writer.Close ();
+
+
+		//StreamReader reader = new StreamReader (path);
+		print ("Highscore recorded: "+reader.ReadLine ());
+		reader.Close ();
 
 	}
 	

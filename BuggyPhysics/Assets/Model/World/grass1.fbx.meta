@@ -1,17 +1,18 @@
 fileFormatVersion: 2
-guid: cd6b7ef276f423540a0329e80538c214
-timeCreated: 1433013488
+guid: b5a840f232c59034d9d1f3942eadab47
+timeCreated: 1433013487
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: stone1
+    100000: grass1
     100002: //RootNode
-    400000: stone1
+    400000: grass1
     400002: //RootNode
-    2300000: stone1
-    3300000: stone1
-    4300000: stone1
+    2300000: grass1
+    3300000: grass1
+    4300000: grass1
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -65,7 +66,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

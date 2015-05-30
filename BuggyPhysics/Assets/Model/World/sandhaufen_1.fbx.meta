@@ -1,17 +1,15 @@
 fileFormatVersion: 2
-guid: cd6b7ef276f423540a0329e80538c214
-timeCreated: 1433013488
+guid: 450b73a884f16bd468669c46f48ba16a
+timeCreated: 1433011980
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: stone1
-    100002: //RootNode
-    400000: stone1
-    400002: //RootNode
-    2300000: stone1
-    3300000: stone1
-    4300000: stone1
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: sandhaufen
   materials:
     importMaterials: 1
     materialName: 0

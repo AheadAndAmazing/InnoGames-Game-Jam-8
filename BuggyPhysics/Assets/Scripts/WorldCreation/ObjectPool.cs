@@ -12,8 +12,11 @@ public class ObjectPool : MonoBehaviour {
 
 	public static ObjectPool Current;
 	public GameObject[] PooledObject;
-	public int PooledAmount = 3;
+	public int PooledAmount = 1;
 	public bool WillGrow = true;
+
+	public int WorldTilesObjectStart = 0;
+	public int ObstacleObjectsStart = 1;
 
 	private IList<GameObject> worldTiles;
 	private IList<GameObject> obstacles;
@@ -40,7 +43,6 @@ public class ObjectPool : MonoBehaviour {
 	}
 
 	void Start () {
-		
 	}
 
 	public GameObject GetPooledObject(PrefabTypes type)
@@ -71,12 +73,12 @@ public class ObjectPool : MonoBehaviour {
 			GameObject obj;
 			if (type == PrefabTypes.WorldTile)
 			{
-				obj = (GameObject)Instantiate(PooledObject[(int)type]);
+				obj = (GameObject)Instantiate(PooledObject[Random.Range(WorldTilesObjectStart,ObstacleObjectsStart)]);
 				worldTiles.Add(obj);
 			}
 			else
 			{
-				obj = (GameObject)Instantiate(PooledObject[Random.Range(1, PooledObject.Length)]);
+				obj = (GameObject)Instantiate(PooledObject[Random.Range(ObstacleObjectsStart, PooledObject.Length)]);
 				obstacles.Add(obj);
 				PooledAmount++;
 			}

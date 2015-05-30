@@ -81,7 +81,6 @@ public class ScoreCounter : MonoBehaviour {
 				fileEnded = true;
 			}
 		}
-
 		reader.Close ();
 
 
@@ -91,8 +90,8 @@ public class ScoreCounter : MonoBehaviour {
 		writer.Close ();
 
 
-		//StreamReader reader = new StreamReader (path);
-		print ("Highscore recorded: "+reader.ReadLine ());
+		reader = new StreamReader (path);
+		print ("Highscore recorded: "+reader.ReadToEnd ());
 		reader.Close ();
 
 	}

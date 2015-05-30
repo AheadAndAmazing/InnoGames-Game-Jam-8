@@ -3,8 +3,14 @@ using System.Collections;
 
 public class EierDestroyer : MonoBehaviour {
 
-	public int eierse;
+	int eierse;
 	bool isNotGameOver = true;
+	public GameObject eierseParent;
+
+	void Start()
+	{
+		eierse = eierseParent.transform.childCount;
+	}
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -23,6 +29,11 @@ public class EierDestroyer : MonoBehaviour {
 	public bool GetIsNotGameOver()
 	{
 		return isNotGameOver;
+	}
+
+	public void AddEiAmount(int amount)
+	{
+		eierse += amount;
 	}
 
 }

@@ -49,7 +49,7 @@ public class PickupKugel : MonoBehaviour
 		if (other.tag == "Player") 
 		{
 			particle.emissionRate = 100;
-			destroyer.eierse++;
+			destroyer.AddEiAmount(1);
 			//this.transform.localScale = new Vector3(.1f,.1f,.1f);
 			newPosition = new Vector3(other.transform.position.x,other.transform.position.y + 4.0f,other.transform.position.z - .4f);
 			//this.transform.position = newPosition;

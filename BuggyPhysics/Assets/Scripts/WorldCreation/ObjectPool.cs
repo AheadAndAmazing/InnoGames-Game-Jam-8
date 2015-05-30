@@ -15,18 +15,14 @@ public class ObjectPool : MonoBehaviour {
 	public int PooledAmount = 3;
 	public bool WillGrow = true;
 
-	private IDictionary<PrefabTypes, IList<GameObject>> pooledObjects;
 	private IList<GameObject> worldTiles;
 	private IList<GameObject> obstacles;
 
 	void Awake()
 	{
 		Current = this;
-		pooledObjects = new Dictionary<PrefabTypes, IList<GameObject>>();
 		worldTiles = new List<GameObject>();
 		obstacles = new List<GameObject>();
-		pooledObjects.Add(PrefabTypes.WorldTile, worldTiles);
-		pooledObjects.Add(PrefabTypes.Obstacle, obstacles);
 		for (int i = 0; i < PooledAmount; i++)
 		{
 			GameObject obj = (GameObject)Instantiate(PooledObject[(int)PrefabTypes.WorldTile]);
@@ -49,10 +45,6 @@ public class ObjectPool : MonoBehaviour {
 
 	public GameObject GetPooledObject(PrefabTypes type)
 	{
-		IList<GameObject> curList;
-		this.pooledObjects.TryGetValue(type, out curList);
-		//this.pooledObjects.
-
 		if(type == PrefabTypes.WorldTile)
 		{
 			for (int i = 0; i < worldTiles.Count; i++)
@@ -89,7 +81,6 @@ public class ObjectPool : MonoBehaviour {
 				PooledAmount++;
 			}
 			obj.SetActive(false);
-			this.pooledObjects[type] = curList;
 			return obj;
 		}
 		return null;

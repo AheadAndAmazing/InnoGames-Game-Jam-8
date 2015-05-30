@@ -30,13 +30,10 @@ public class WorldCreation : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if(PlayerObject.transform.position.z >= currentWorldTiles[0].transform.position.z + WORLDTILELENGTH*2)
 		{
-			//TODO: Add Obstacles
 			MoveWorldTileToNewPosition();
-			//AddObstaclesToWorldTile(MoveWorldTileToNewPosition(), Mathf.Clamp((int)Mathf.Pow(CurrentDifficultyLvl, 2) + 2, 0, 9));
 		}
 		WorldTile.Speed += SPEEDINCREASE * Time.deltaTime;
 	}
@@ -97,10 +94,7 @@ public class WorldCreation : MonoBehaviour {
 			tile.PlacedObstacles.Add(obs);
 			obstacleCost = obs.ObstacleDifficulty;
 		}
-		else
-		{
-			Debug.Log("Can't Spawn :/");
-		}
+		
 		return obstacleCost;
 	}
 }

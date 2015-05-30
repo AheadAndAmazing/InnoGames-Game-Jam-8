@@ -55,7 +55,7 @@ public class ObjectPool : MonoBehaviour {
 
 		if(type == PrefabTypes.WorldTile)
 		{
-			for (int i = 0; i < pooledObjects.Count; i++)
+			for (int i = 0; i < worldTiles.Count; i++)
 			{
 				if (!worldTiles[i].activeInHierarchy)
 				{
@@ -65,7 +65,7 @@ public class ObjectPool : MonoBehaviour {
 		}
 		else
 		{
-			for (int i = 0; i < pooledObjects.Count; i++)
+			for (int i = 0; i < obstacles.Count; i++)
 			{
 				if (!obstacles[i].activeInHierarchy)
 				{
@@ -86,6 +86,7 @@ public class ObjectPool : MonoBehaviour {
 			{
 				obj = (GameObject)Instantiate(PooledObject[Random.Range(1, PooledObject.Length)]);
 				obstacles.Add(obj);
+				PooledAmount++;
 			}
 			obj.SetActive(false);
 			this.pooledObjects[type] = curList;

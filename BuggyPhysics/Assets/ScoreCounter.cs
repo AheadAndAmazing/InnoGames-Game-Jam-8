@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.IO;
 
 public class ScoreCounter : MonoBehaviour {
 
@@ -14,6 +15,8 @@ public class ScoreCounter : MonoBehaviour {
 
 	Text text;
 	bool scoreScreenWasShown = false;
+
+	public string FileName;
 
 	// Use this for initialization
 	void Start () 
@@ -44,4 +47,17 @@ public class ScoreCounter : MonoBehaviour {
 		}
 	}
 
+	void updateHighscoreList(float score)
+	{
+		 // This contains the name of the file. Don't add the ".txt"
+		// Assign in inspector
+		TextAsset asset; // Gets assigned through code. Reads the file.
+		StreamWriter writer; // This is the writer that writes to the file
+
+		asset = Resources.Load(FileName + ".txt") as TextAsset;
+		writer = new StreamWriter("Resources/" + FileName + ".txt"); // Does this work?
+		writer.WriteLine(score.ToString());
+
+	}
+	
 }

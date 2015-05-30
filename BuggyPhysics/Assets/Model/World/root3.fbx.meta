@@ -1,15 +1,17 @@
 fileFormatVersion: 2
-guid: 1faf5081707cdfb40963bfe0cfa7be72
-timeCreated: 1432955728
+guid: eef4f901fbb2adf4b9fe4955ce70933e
+timeCreated: 1433006563
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: cocoon
+    100000: root3
+    100002: //RootNode
+    400000: root3
+    400002: //RootNode
+    2300000: root3
+    3300000: root3
+    4300000: root3
   materials:
     importMaterials: 1
     materialName: 0
@@ -45,9 +47,9 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
+    normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0

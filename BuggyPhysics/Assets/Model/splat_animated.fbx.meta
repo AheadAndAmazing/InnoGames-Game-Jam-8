@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: c4f435500c6bcad4e87a9b427e0f940f
+timeCreated: 1433002496
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: jnt_backleg_L1
+    100002: jnt_backleg_L2
+    100004: jnt_backleg_L3
+    100006: jnt_backleg_L4
+    100008: jnt_backleg_R1
+    100010: jnt_backleg_R2
+    100012: jnt_backleg_R3
+    100014: jnt_backleg_R4
+    100016: jnt_frontleg_L1
+    100018: jnt_frontleg_L2
+    100020: jnt_frontleg_L3
+    100022: jnt_frontleg_L4
+    100024: jnt_frontleg_R1
+    100026: jnt_frontleg_R2
+    100028: jnt_frontleg_R3
+    100030: jnt_frontleg_R4
+    100032: jnt_middleleg_L1
+    100034: jnt_middleleg_L2
+    100036: jnt_middleleg_L3
+    100038: jnt_middleleg_L4
+    100040: jnt_middleleg_R1
+    100042: jnt_middleleg_R2
+    100044: jnt_middleleg_R3
+    100046: jnt_middleleg_R4
+    100048: root
+    100050: splat
+    100052: //RootNode
+    400000: jnt_backleg_L1
+    400002: jnt_backleg_L2
+    400004: jnt_backleg_L3
+    400006: jnt_backleg_L4
+    400008: jnt_backleg_R1
+    400010: jnt_backleg_R2
+    400012: jnt_backleg_R3
+    400014: jnt_backleg_R4
+    400016: jnt_frontleg_L1
+    400018: jnt_frontleg_L2
+    400020: jnt_frontleg_L3
+    400022: jnt_frontleg_L4
+    400024: jnt_frontleg_R1
+    400026: jnt_frontleg_R2
+    400028: jnt_frontleg_R3
+    400030: jnt_frontleg_R4
+    400032: jnt_middleleg_L1
+    400034: jnt_middleleg_L2
+    400036: jnt_middleleg_L3
+    400038: jnt_middleleg_L4
+    400040: jnt_middleleg_R1
+    400042: jnt_middleleg_R2
+    400044: jnt_middleleg_R3
+    400046: jnt_middleleg_R4
+    400048: root
+    400050: splat
+    400052: //RootNode
+    4300000: splat
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: splat
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/jnt_backleg_L1
+        weight: 1
+      - path: root/jnt_backleg_L1/jnt_backleg_L2
+        weight: 1
+      - path: root/jnt_backleg_L1/jnt_backleg_L2/jnt_backleg_L3
+        weight: 1
+      - path: root/jnt_backleg_L1/jnt_backleg_L2/jnt_backleg_L3/jnt_backleg_L4
+        weight: 1
+      - path: root/jnt_backleg_R1
+        weight: 1
+      - path: root/jnt_backleg_R1/jnt_backleg_R2
+        weight: 1
+      - path: root/jnt_backleg_R1/jnt_backleg_R2/jnt_backleg_R3
+        weight: 1
+      - path: root/jnt_backleg_R1/jnt_backleg_R2/jnt_backleg_R3/jnt_backleg_R4
+        weight: 1
+      - path: root/jnt_frontleg_L1
+        weight: 1
+      - path: root/jnt_frontleg_L1/jnt_frontleg_L2
+        weight: 1
+      - path: root/jnt_frontleg_L1/jnt_frontleg_L2/jnt_frontleg_L3
+        weight: 1
+      - path: root/jnt_frontleg_L1/jnt_frontleg_L2/jnt_frontleg_L3/jnt_frontleg_L4
+        weight: 1
+      - path: root/jnt_frontleg_R1
+        weight: 1
+      - path: root/jnt_frontleg_R1/jnt_frontleg_R2
+        weight: 1
+      - path: root/jnt_frontleg_R1/jnt_frontleg_R2/jnt_frontleg_R3
+        weight: 1
+      - path: root/jnt_frontleg_R1/jnt_frontleg_R2/jnt_frontleg_R3/jnt_frontleg_R4
+        weight: 1
+      - path: root/jnt_middleleg_L1
+        weight: 1
+      - path: root/jnt_middleleg_L1/jnt_middleleg_L2
+        weight: 1
+      - path: root/jnt_middleleg_L1/jnt_middleleg_L2/jnt_middleleg_L3
+        weight: 1
+      - path: root/jnt_middleleg_L1/jnt_middleleg_L2/jnt_middleleg_L3/jnt_middleleg_L4
+        weight: 1
+      - path: root/jnt_middleleg_R1
+        weight: 1
+      - path: root/jnt_middleleg_R1/jnt_middleleg_R2
+        weight: 1
+      - path: root/jnt_middleleg_R1/jnt_middleleg_R2/jnt_middleleg_R3
+        weight: 1
+      - path: root/jnt_middleleg_R1/jnt_middleleg_R2/jnt_middleleg_R3/jnt_middleleg_R4
+        weight: 1
+      - path: splat
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    splitTangentsAcrossUV: 1
+    normalImportMode: 1
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

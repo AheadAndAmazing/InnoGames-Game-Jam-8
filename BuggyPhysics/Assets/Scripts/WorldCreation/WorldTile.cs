@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WorldTile : MonoBehaviour {
 
-	public Transform[] ObstacleSpawnPoints;
-	private const float MAXSPEED = 50.0f;
-	
+	public SpawnPointCluster[] ObstacleSpawnPoints;
+	private const float MAXSPEED = 25.0f;
+
+	[HideInInspector]
+	public IList<Obstacle> PlacedObstacles = new List<Obstacle>();
+
 	public static float Speed { 
 		get { return speed; } 
 		set { speed = Mathf.Clamp(value, 0, MAXSPEED); } 

@@ -22,9 +22,6 @@ public class ObjectPool : MonoBehaviour {
 	void Awake()
 	{
 		Current = this;
-	}
-
-	void Start () {
 		pooledObjects = new Dictionary<PrefabTypes, IList<GameObject>>();
 		worldTiles = new List<GameObject>();
 		obstacles = new List<GameObject>();
@@ -42,8 +39,12 @@ public class ObjectPool : MonoBehaviour {
 				obs.SetActive(false);
 				obstacles.Add(obs);
 			}
-			
+
 		}
+	}
+
+	void Start () {
+		
 	}
 
 	public GameObject GetPooledObject(PrefabTypes type)

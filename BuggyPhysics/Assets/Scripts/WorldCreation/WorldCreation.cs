@@ -10,10 +10,6 @@ public class WorldCreation : MonoBehaviour {
 	private const float SPEEDINCREASE = 0.5f;
 
 	public static int CurrentDifficultyLvl = 1;
-	public WorldTile ModulePrefab;
-	public Obstacle[] Obstacles;
-
-
 	
 	public GameObject PlayerObject;
 	
@@ -24,6 +20,9 @@ public class WorldCreation : MonoBehaviour {
 		WorldTile startTile = CreateNewWorlTile(this.transform.position);
 		WorldTile followTile = CreateNewWorlTile(new Vector3(startTile.transform.position.x, startTile.transform.position.y, startTile.transform.position.z + WORLDTILELENGTH));
 		WorldTile endTile = CreateNewWorlTile(new Vector3(followTile.transform.position.x, followTile.transform.position.y, followTile.transform.position.z + WORLDTILELENGTH));
+		currentWorldTiles.Add(startTile);
+		currentWorldTiles.Add(followTile);
+		currentWorldTiles.Add(endTile);
 	}
 	
 	// Update is called once per frame

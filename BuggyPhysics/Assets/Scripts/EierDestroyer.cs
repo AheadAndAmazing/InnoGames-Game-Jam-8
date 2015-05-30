@@ -4,6 +4,7 @@ using System.Collections;
 public class EierDestroyer : MonoBehaviour {
 
 	public int eierse;
+	bool isNotGameOver = true;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -14,8 +15,14 @@ public class EierDestroyer : MonoBehaviour {
 			{
 				//TODO: Lose
 				print ("YOU LOSE");
+				isNotGameOver = false;
 			}
 		}
+	}
+
+	public bool GetIsNotGameOver()
+	{
+		return isNotGameOver;
 	}
 
 }

@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour {
 		} else if (this.transform.position.x < -7.0f && speedFactor < 0.0f) {
 			speedFactor = 0.0f;
 		}
-		rigid.AddForce (speedFactor, 0.0f, 0.0f, ForceMode.VelocityChange);
+		rigid.AddForce (speedFactor * 7.0f, 0.0f, 0.0f, ForceMode.VelocityChange);
 		//this.transform.Translate (50* (Input.GetAxis ("Horizontal") * Time.deltaTime), 0.0f, Input.GetAxis("Vertical")*Time.deltaTime);
 	}
 }

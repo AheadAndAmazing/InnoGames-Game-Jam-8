@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: a2e82095830828141b43d7511bc075cb
+timeCreated: 1432949018
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Mushroom10
+    100004: Mushroom11
+    100006: Mushroom12
+    100008: Mushroom13
+    100010: Mushroom2
+    100012: Mushroom3
+    100014: Mushroom4
+    100016: Mushroom5
+    100018: Mushroom6
+    100020: Mushroom7
+    100022: Mushroom8
+    100024: Mushroom9
+    100026: pCube1
+    400000: //RootNode
+    400002: Mushroom10
+    400004: Mushroom11
+    400006: Mushroom12
+    400008: Mushroom13
+    400010: Mushroom2
+    400012: Mushroom3
+    400014: Mushroom4
+    400016: Mushroom5
+    400018: Mushroom6
+    400020: Mushroom7
+    400022: Mushroom8
+    400024: Mushroom9
+    400026: pCube1
+    2300000: Mushroom10
+    2300002: Mushroom11
+    2300004: Mushroom12
+    2300006: Mushroom13
+    2300008: Mushroom2
+    2300010: Mushroom3
+    2300012: Mushroom4
+    2300014: Mushroom5
+    2300016: Mushroom6
+    2300018: Mushroom7
+    2300020: Mushroom8
+    2300022: Mushroom9
+    2300024: pCube1
+    3300000: Mushroom10
+    3300002: Mushroom11
+    3300004: Mushroom12
+    3300006: Mushroom13
+    3300008: Mushroom2
+    3300010: Mushroom3
+    3300012: Mushroom4
+    3300014: Mushroom5
+    3300016: Mushroom6
+    3300018: Mushroom7
+    3300020: Mushroom8
+    3300022: Mushroom9
+    3300024: pCube1
+    4300000: pCube1
+    4300002: Mushroom2
+    4300004: Mushroom3
+    4300006: Mushroom4
+    4300008: Mushroom5
+    4300010: Mushroom6
+    4300012: Mushroom7
+    4300014: Mushroom8
+    4300016: Mushroom9
+    4300018: Mushroom10
+    4300020: Mushroom11
+    4300022: Mushroom12
+    4300024: Mushroom13
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

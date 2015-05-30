@@ -99,7 +99,7 @@ public class WorldCreation : MonoBehaviour {
 		}
 		else
 		{
-
+			Debug.Log("Can't Spawn :/");
 		}
 		return obstacleCost;
 	}

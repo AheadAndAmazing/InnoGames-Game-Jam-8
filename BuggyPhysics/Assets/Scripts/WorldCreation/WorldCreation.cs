@@ -9,7 +9,7 @@ public class WorldCreation : MonoBehaviour {
 	private const float WORLDTILELENGTH = 100;
 	private const float SPEEDINCREASE = 0.5f;
 
-	public static int CurrentDifficultyLvl { get { return curDiff; } set { curDiff = Mathf.Clamp(value, 0, 5); } }
+	public static int CurrentDifficultyLvl { get { return curDiff; } set { curDiff = Mathf.Clamp(value, 0, 14); } }
 	private static int curDiff = 1;
 	
 	public GameObject PlayerObject;
@@ -77,24 +77,32 @@ public class WorldCreation : MonoBehaviour {
 			{
 				int ChooseSpawnCluster = Random.Range(0, tile.ObstacleSpawnPoints.Length);
 				int ChooseStartSpawnPoint = Random.Range(0, tile.ObstacleSpawnPoints[ChooseSpawnCluster].spawnPoints.Length);
-				int obstacleCost = SpawnObstacle(tile.ObstacleSpawnPoints[ChooseSpawnCluster].spawnPoints[ChooseStartSpawnPoint], tile);
+				SpawnObstacle(tile.ObstacleSpawnPoints[ChooseSpawnCluster].spawnPoints[ChooseStartSpawnPoint], tile);
 			}
+		if(obstacleLvlPoints >= 5)
+		{
+			SpawnPoint point = tile.RootSpawns.spawnPoints[Random.Range(0, 2)];
+			GameObject root = ObjectPool.Current.GetPooledObject(PrefabTypes.Root);
+			root.transform.position = point.transform.position;
+			Obstacle obs = root.GetComponent<Obstacle>();
+			if(obs.TryRegisterOnSpawnPoint(point))
+			{
+				root.SetActive(true);
+				tile.PlacedObstacles.Add(obs);
+			}
+		}
 	}
 
-	private int SpawnObstacle( SpawnPoint point, WorldTile tile)
+	private void SpawnObstacle( SpawnPoint point, WorldTile tile)
 	{
 		GameObject obj = ObjectPool.Current.GetPooledObject(PrefabTypes.Obstacle);
 		obj.transform.position = point.transform.position;
 
-		int obstacleCost = 0;
 		Obstacle obs = obj.GetComponent<Obstacle>();
 		if (obs.TryRegisterOnSpawnPoint(point))
 		{
 			obj.SetActive(true);
 			tile.PlacedObstacles.Add(obs);
-			obstacleCost = obs.ObstacleDifficulty;
 		}
-		
-		return obstacleCost;
 	}
 }

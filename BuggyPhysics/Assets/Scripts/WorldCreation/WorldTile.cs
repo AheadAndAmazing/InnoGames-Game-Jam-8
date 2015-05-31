@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class WorldTile : MonoBehaviour {
 
 	public SpawnPointCluster[] ObstacleSpawnPoints;
+	public SpawnPointCluster RootSpawns;
 	private const float MAXSPEED = 25.0f;
 
 	[HideInInspector]

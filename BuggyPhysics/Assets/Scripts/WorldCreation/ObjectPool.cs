@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public enum PrefabTypes
 {
 	WorldTile,
-	Obstacle
+	Obstacle,
+	Root
 }
 
 public class ObjectPool : MonoBehaviour {
@@ -17,32 +18,36 @@ public class ObjectPool : MonoBehaviour {
 
 	public int WorldTilesObjectStart = 0;
 	public int ObstacleObjectsStart = 1;
+	public int RootObstacleStart = 6;
 
 	private IList<GameObject> worldTiles;
 	private IList<GameObject> obstacles;
+	private IList<GameObject> roots;
 
 	void Awake()
 	{
 		Current = this;
 		worldTiles = new List<GameObject>();
 		obstacles = new List<GameObject>();
+		roots = new List<GameObject>();
+
 		for (int i = 0; i < PooledAmount; i++)
 		{
 			GameObject obj = (GameObject)Instantiate(PooledObject[(int)PrefabTypes.WorldTile]);
 			obj.SetActive(false);
 			worldTiles.Add(obj);
 
-			for (int k = 1; k < PooledObject.Length; k++)
+			for (int k = 1; k < RootObstacleStart; k++)
 			{
 				GameObject obs = (GameObject)Instantiate(PooledObject[k]);
 				obs.SetActive(false);
 				obstacles.Add(obs);
 			}
 
+			GameObject obr = (GameObject)Instantiate(PooledObject[RootObstacleStart]);
+			obr.SetActive(false);
+			roots.Add(obr);
 		}
-	}
-
-	void Start () {
 	}
 
 	public GameObject GetPooledObject(PrefabTypes type)
@@ -57,13 +62,23 @@ public class ObjectPool : MonoBehaviour {
 				}
 			}
 		}
-		else
+		else if(type == PrefabTypes.Obstacle)
 		{
 			for (int i = 0; i < obstacles.Count; i++)
 			{
 				if (!obstacles[i].activeInHierarchy)
 				{
 					return obstacles[i];
+				}
+			}
+		}
+		else
+		{
+			for (int i = 0; i < roots.Count; i++)
+			{
+				if(!roots[i].activeInHierarchy)
+				{
+					return roots[i];
 				}
 			}
 		}
@@ -76,11 +91,16 @@ public class ObjectPool : MonoBehaviour {
 				obj = (GameObject)Instantiate(PooledObject[Random.Range(WorldTilesObjectStart,ObstacleObjectsStart)]);
 				worldTiles.Add(obj);
 			}
-			else
+			else if(type == PrefabTypes.Obstacle)
 			{
-				obj = (GameObject)Instantiate(PooledObject[Random.Range(ObstacleObjectsStart, PooledObject.Length)]);
+				obj = (GameObject)Instantiate(PooledObject[Random.Range(ObstacleObjectsStart, RootObstacleStart)]);
 				obstacles.Add(obj);
 				PooledAmount++;
+			}
+			else
+			{
+				obj = (GameObject) Instantiate(PooledObject[RootObstacleStart]);
+				roots.Add(obj);
 			}
 			obj.SetActive(false);
 			return obj;

@@ -41,6 +41,8 @@ public class PickupKugel : MonoBehaviour
 			rigid.isKinematic = false;
 			this.transform.localScale = new Vector3(.2f,.2f,.2f);
 			rigid.AddForce(new Vector3(0.0f,-50.0f,0.0f));
+			Debug.Log("I was here");
+			destroyer.AddEiAmount(1);
 			if(particle !=null)
 			{
 				particle.emissionRate = 0;
@@ -56,12 +58,12 @@ public class PickupKugel : MonoBehaviour
 		if (other.tag == "Player") 
 		{
 			particle.emissionRate = 100;
-			destroyer.AddEiAmount(1);
 			//this.transform.localScale = new Vector3(.1f,.1f,.1f);
 			newPosition = new Vector3(other.transform.position.x,other.transform.position.y + 4.0f,other.transform.position.z - .4f);
 			//this.transform.position = newPosition;
 			moveToPlayer = true;
 			ObjectPool.Current.eggs.Remove(this.gameObject);
+			this.GetComponent<Obstacle>().RemoveFromSpawn();
 			this.transform.parent = null;
 
 

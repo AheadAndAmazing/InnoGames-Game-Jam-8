@@ -36,11 +36,14 @@ public class ObjectPool : MonoBehaviour {
 
 		for (int i = 0; i < PooledAmount; i++)
 		{
-			GameObject obj = (GameObject)Instantiate(PooledObject[(int)PrefabTypes.WorldTile]);
-			obj.SetActive(false);
-			worldTiles.Add(obj);
+			for (int k = 0; k < ObstacleObjectsStart; k++)
+			{
+				GameObject obj = (GameObject)Instantiate(PooledObject[k]);
+				obj.SetActive(false);
+				worldTiles.Add(obj);
+			}
 
-			for (int k = 1; k < RootObstacleStart; k++)
+			for (int k = ObstacleObjectsStart; k < RootObstacleStart; k++)
 			{
 				GameObject obs = (GameObject)Instantiate(PooledObject[k]);
 				obs.SetActive(false);

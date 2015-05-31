@@ -5,6 +5,8 @@ using System.IO;
 
 public class MainMenu : MonoBehaviour {
 
+	static bool splashWasShown;
+
 	public bool isPresentationVersion;
 	public GameObject splashScreen;
 	public GameObject creditsButton;
@@ -30,10 +32,15 @@ public class MainMenu : MonoBehaviour {
 		if ((!isPresentationVersion && deltaTime <= 0.0f) || Input.GetButtonDown("Fire1"))
 		{
 			splashScreen.SetActive(false);
+			splashWasShown = true;
 		}
 
 		if (credits.enabled && Input.anyKeyDown) {
 			//ToggleCredits();
+		}
+
+		if (splashWasShown) {
+			splashScreen.SetActive(false);
 		}
 	}
 

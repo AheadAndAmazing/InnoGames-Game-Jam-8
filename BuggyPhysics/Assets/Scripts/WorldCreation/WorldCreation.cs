@@ -5,11 +5,10 @@ using System.Collections.Generic;
 
 public class WorldCreation : MonoBehaviour {
 
-
 	private const float WORLDTILELENGTH = 100;
 	private float SPEEDINCREASE = 0.5f;
 
-	public static int CurrentDifficultyLvl { get { return curDiff; } set { curDiff = Mathf.Clamp(value, 0, 14); } }
+	public static int CurrentDifficultyLvl { get { return curDiff; } set { curDiff = Mathf.Clamp(value, 1, 14); } }
 	private static int curDiff = 1;
 	
 	public GameObject PlayerObject;

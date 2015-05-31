@@ -3,9 +3,11 @@ using System.Collections;
 
 public class MakeEggsTrigger : MonoBehaviour {
 
+	SoundController soundControl;
+
 	// Use this for initialization
 	void Start () {
-	
+		soundControl = Camera.main.GetComponent<SoundController> ();
 	}
 	
 	// Update is called once per frame
@@ -19,6 +21,7 @@ public class MakeEggsTrigger : MonoBehaviour {
 			if(other.attachedRigidbody.velocity.y > 0.0f)
 			{
 				other.isTrigger = true;
+				soundControl.randomChirp();
 			}
 			else if(other.attachedRigidbody.velocity.y < -0.5f)
 			{

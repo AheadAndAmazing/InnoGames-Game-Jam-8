@@ -5,18 +5,23 @@ public class PickupKugel : MonoBehaviour
 {
 	EierDestroyer destroyer;
 	Rigidbody rigid;
+	Collider coll;
 	ParticleSystem particle;
 	Vector3 newPosition;
 	bool moveToPlayer;
+	[HideInInspector]
+	public WorldTile tile;
 
-	void Start () 
+	void OnEnable()
 	{
-		destroyer = GameObject.Find ("DerEierDestroyer").GetComponent<EierDestroyer>();
+		destroyer = GameObject.Find("DerEierDestroyer").GetComponent<EierDestroyer>();
 		rigid = this.GetComponent<Rigidbody>();
-		if (this.GetComponent<ParticleSystem> () != null) {
-			particle = this.GetComponent<ParticleSystem> ();
+		coll = this.GetComponent<Collider>();
+		if (this.GetComponent<ParticleSystem>() != null)
+		{
+			particle = this.GetComponent<ParticleSystem>();
+			particle.emissionRate = 0;
 		}
-		particle.emissionRate = 0;
 	}
 
 	void Update () 
@@ -25,6 +30,10 @@ public class PickupKugel : MonoBehaviour
 		if (moveToPlayer) {
 			transform.position = Vector3.MoveTowards(this.transform.position, newPosition, Time.deltaTime * 20.0f);
 			particle.emissionRate = Mathf.Lerp(0, 100,Time.deltaTime * 20.0f);
+			this.tag = "Kugel";
+			this.gameObject.layer = 8;
+			this.tile.PlacedObstacles.Remove(this.GetComponent<Obstacle>());
+			ObjectPool.Current.eggs.Remove(this.gameObject);
 			//this.transform.localScale = Vector3.MoveTowards(this.transform.localScale,new Vector3(.1f,.1f,.1f),Time.deltaTime * 8.0f);
 		}
 		if (this.transform.position == newPosition) {
@@ -52,6 +61,7 @@ public class PickupKugel : MonoBehaviour
 			newPosition = new Vector3(other.transform.position.x,other.transform.position.y + 4.0f,other.transform.position.z - .4f);
 			//this.transform.position = newPosition;
 			moveToPlayer = true;
+			ObjectPool.Current.eggs.Remove(this.gameObject);
 			this.transform.parent = null;
 
 

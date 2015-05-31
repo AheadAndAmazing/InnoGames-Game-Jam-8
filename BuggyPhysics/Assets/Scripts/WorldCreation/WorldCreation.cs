@@ -48,6 +48,7 @@ public class WorldCreation : MonoBehaviour {
 		FreeObstacleFromWorldTile(tileToMove);
 		
 		AddObstaclesToWorldTile(tileToMove, CurrentDifficultyLvl);
+		AddEggToWorldTile(tileToMove);
 		CurrentDifficultyLvl++;
 		return tileToMove;
 	}
@@ -69,6 +70,35 @@ public class WorldCreation : MonoBehaviour {
 			obst.gameObject.SetActive(false);
 		}
 		tile.PlacedObstacles.Clear();
+	}
+
+	private void AddEggToWorldTile(WorldTile tile)
+	{
+		bool hasSpawned= false;
+		int counter = 0;
+		while (!hasSpawned)
+		{
+			int ChooseSpawnCluster = Random.Range(0, tile.ObstacleSpawnPoints.Length);
+			int ChooseStartSpawnPoint = Random.Range(0, tile.ObstacleSpawnPoints[ChooseSpawnCluster].spawnPoints.Length);
+			SpawnPoint point = tile.ObstacleSpawnPoints[ChooseSpawnCluster].spawnPoints[ChooseStartSpawnPoint];
+			GameObject obj = ObjectPool.Current.GetPooledObject(PrefabTypes.Egg);
+			obj.transform.position = point.transform.position;
+			Obstacle obs = obj.GetComponent<Obstacle>();
+
+			if (obs.TryRegisterOnSpawnPoint(point))
+			{
+				PickupKugel pick = obj.GetComponent<PickupKugel>();
+				tile.PlacedObstacles.Add(obs);
+				pick.tile = tile;
+				obj.SetActive(true);
+				hasSpawned = true;
+			}
+			else
+			{
+				counter++;
+				hasSpawned = counter > 3;
+			}
+		}
 	}
 
 	private void AddObstaclesToWorldTile(WorldTile tile, int obstacleLvlPoints)

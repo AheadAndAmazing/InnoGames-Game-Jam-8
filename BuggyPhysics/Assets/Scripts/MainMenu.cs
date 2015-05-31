@@ -63,10 +63,25 @@ public class MainMenu : MonoBehaviour {
 	{
 		string path = "Resources/Highscore.txt";
 		if (File.Exists (path)) {
-			string highScoresFromFile = File.ReadAllText (path);
-			highScores.text = highScoresFromFile;
+
+			string[] top20HighScores = File.ReadAllLines (path);
+			int highscoreToRead;
+			if(top20HighScores.Length > 20)
+			{
+				highscoreToRead = 20;
+			}
+			else
+			{
+				highscoreToRead = top20HighScores.Length;
+			}
+
+			for(int i=0; i<highscoreToRead; i++)
+			{
+				highScores.text += top20HighScores[i]+"\n";
+			}
+
 		} else {
-			highScores.text = "No Highscore recorded! :(";
+			highScores.text = "No Highscore recorded yet! :(";
 		}
 	}
 }

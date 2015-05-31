@@ -9,6 +9,7 @@ public class ScoreCounter : MonoBehaviour {
 	public EierDestroyer eierDestroyer;
 	public Text gameOverText;
 	public Text scoreText;
+	public Text returnToMainMenuText;
 
 	float time;
 	float score;
@@ -22,6 +23,8 @@ public class ScoreCounter : MonoBehaviour {
 	string path;
 
 	List<int> highScoreList = new List<int>();
+
+	bool gameOver = false;
 
 	// Use this for initialization
 	void Start () 
@@ -39,6 +42,14 @@ public class ScoreCounter : MonoBehaviour {
 			text.text = score.ToString ();
 		} else {
 			setupEndScoreScreen();
+			gameOver = true;
+		}
+
+		if (gameOver && Input.anyKeyDown) {
+			Time.timeScale = 1.0f;
+			WorldCreation.CurrentDifficultyLvl = 0;
+			WorldTile.Speed = 2.0f;
+			Application.LoadLevel("MainMenu");
 		}
 	}
 
@@ -50,6 +61,7 @@ public class ScoreCounter : MonoBehaviour {
 			Time.timeScale = 0.0f;
 			gameOverText.enabled = true;
 			scoreText.enabled = true;
+			returnToMainMenuText.enabled = true;
 			scoreText.text += score.ToString ();
 
 			updateHighscoreList(score);

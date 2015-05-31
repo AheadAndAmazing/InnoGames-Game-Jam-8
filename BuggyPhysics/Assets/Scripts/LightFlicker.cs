@@ -13,6 +13,6 @@ public class LightFlicker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		myLight.intensity = Random.Range(0.8f,1.0f);
+		myLight.intensity = Random.Range(0.9f,1.0f);
 	}
 }

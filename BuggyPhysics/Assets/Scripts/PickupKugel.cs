@@ -11,6 +11,7 @@ public class PickupKugel : MonoBehaviour
 	bool moveToPlayer;
 	[HideInInspector]
 	public WorldTile tile;
+	bool wasPickedUp = false;
 
 	void OnEnable()
 	{
@@ -47,7 +48,6 @@ public class PickupKugel : MonoBehaviour
 			{
 				particle.emissionRate = 0;
 			}
-			
 		}
 
 	
@@ -55,11 +55,12 @@ public class PickupKugel : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Player") 
+		if (other.tag == "Player" && !wasPickedUp) 
 		{
+			wasPickedUp = true;
 			particle.emissionRate = 100;
 			//this.transform.localScale = new Vector3(.1f,.1f,.1f);
-			newPosition = new Vector3(other.transform.position.x,other.transform.position.y + 4.0f,other.transform.position.z - .4f);
+			newPosition = new Vector3(other.transform.position.x,other.transform.position.y + 2.0f,other.transform.position.z - .4f);
 			//this.transform.position = newPosition;
 			moveToPlayer = true;
 			ObjectPool.Current.eggs.Remove(this.gameObject);

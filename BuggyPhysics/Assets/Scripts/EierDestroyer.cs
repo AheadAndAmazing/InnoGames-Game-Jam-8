@@ -19,7 +19,6 @@ public class EierDestroyer : MonoBehaviour {
 			eierse --;
 			if(eierse == 0)
 			{
-				//TODO: Lose
 				print ("YOU LOSE");
 				isNotGameOver = false;
 			}

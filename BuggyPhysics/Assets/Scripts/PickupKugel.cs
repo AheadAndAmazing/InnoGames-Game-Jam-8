@@ -39,7 +39,7 @@ public class PickupKugel : MonoBehaviour
 		if (this.transform.position == newPosition) {
 			moveToPlayer = false;
 			rigid.isKinematic = false;
-			this.transform.localScale = new Vector3(.1f,.1f,.1f);
+			this.transform.localScale = new Vector3(.2f,.2f,.2f);
 			rigid.AddForce(new Vector3(0.0f,-50.0f,0.0f));
 			if(particle !=null)
 			{

@@ -20,16 +20,14 @@ public class HandleEggCollision : MonoBehaviour {
 	{
 		if (other.tag == "Kugel") {
 			other.transform.parent = this.transform;
+			other.attachedRigidbody.isKinematic = true;
 
-
-			if(!other.attachedRigidbody.isKinematic)
+			if(other.transform.childCount == 0.0f)
 			{
 				GameObject currentSplatter = Instantiate(bugSplatter) as GameObject;
 				currentSplatter.transform.parent = other.transform;
 				currentSplatter.transform.localPosition = Vector3.zero;
 			}
-			other.attachedRigidbody.isKinematic = true;
-
 
 		}
 	}

@@ -4,10 +4,13 @@ using System.Collections;
 public class HandleEggCollision : MonoBehaviour {
 
 	public GameObject bugSplatter;
+	Camera mainCam;
+	SoundController soundControl;
 
 	// Use this for initialization
 	void Start () {
-	
+		mainCam = Camera.main;
+		soundControl = mainCam.GetComponent<SoundController>();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +24,7 @@ public class HandleEggCollision : MonoBehaviour {
 		if (other.tag == "Kugel") {
 			other.transform.parent = this.transform;
 			other.attachedRigidbody.isKinematic = true;
+			soundControl.randomSplat();
 
 			if(other.transform.childCount == 0.0f)
 			{

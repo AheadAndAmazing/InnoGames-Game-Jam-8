@@ -7,7 +7,7 @@ public class WorldCreation : MonoBehaviour {
 
 
 	private const float WORLDTILELENGTH = 100;
-	private const float SPEEDINCREASE = 0.5f;
+	private float SPEEDINCREASE = 0.5f;
 
 	public static int CurrentDifficultyLvl { get { return curDiff; } set { curDiff = Mathf.Clamp(value, 0, 14); } }
 	private static int curDiff = 1;
@@ -35,6 +35,7 @@ public class WorldCreation : MonoBehaviour {
 		{
 			MoveWorldTileToNewPosition();
 		}
+		SPEEDINCREASE = Mathf.Sqrt(WorldTile.Speed)/10.0f;
 		WorldTile.Speed += SPEEDINCREASE * Time.deltaTime;
 	}
 

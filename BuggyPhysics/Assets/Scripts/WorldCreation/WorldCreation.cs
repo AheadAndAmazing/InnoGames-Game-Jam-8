@@ -66,6 +66,7 @@ public class WorldCreation : MonoBehaviour {
 	{
 		foreach(Obstacle obst in tile.PlacedObstacles)
 		{
+			obst.RemoveFromSpawn();
 			obst.transform.parent = null;
 			obst.gameObject.SetActive(false);
 		}

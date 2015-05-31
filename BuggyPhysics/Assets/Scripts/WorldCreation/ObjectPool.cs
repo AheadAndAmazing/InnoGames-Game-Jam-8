@@ -6,7 +6,8 @@ public enum PrefabTypes
 {
 	WorldTile,
 	Obstacle,
-	Root
+	Root,
+	Egg
 }
 
 public class ObjectPool : MonoBehaviour {
@@ -23,6 +24,7 @@ public class ObjectPool : MonoBehaviour {
 	private IList<GameObject> worldTiles;
 	private IList<GameObject> obstacles;
 	private IList<GameObject> roots;
+	public IList<GameObject> eggs;
 
 	void Awake()
 	{
@@ -30,6 +32,7 @@ public class ObjectPool : MonoBehaviour {
 		worldTiles = new List<GameObject>();
 		obstacles = new List<GameObject>();
 		roots = new List<GameObject>();
+		eggs = new List<GameObject>();
 
 		for (int i = 0; i < PooledAmount; i++)
 		{
@@ -47,6 +50,10 @@ public class ObjectPool : MonoBehaviour {
 			GameObject obr = (GameObject)Instantiate(PooledObject[RootObstacleStart]);
 			obr.SetActive(false);
 			roots.Add(obr);
+
+			GameObject obe = (GameObject)Instantiate(PooledObject[RootObstacleStart + 1]);
+			obe.SetActive(false);
+			eggs.Add(obe);
 		}
 	}
 
@@ -72,13 +79,23 @@ public class ObjectPool : MonoBehaviour {
 				}
 			}
 		}
-		else
+		else if(type == PrefabTypes.Root)
 		{
 			for (int i = 0; i < roots.Count; i++)
 			{
 				if(!roots[i].activeInHierarchy)
 				{
 					return roots[i];
+				}
+			}
+		}
+		else
+		{
+			for (int i = 0; i < eggs.Count; i++)
+			{
+				if (!eggs[i].activeInHierarchy)
+				{
+					return eggs[i];
 				}
 			}
 		}
@@ -97,10 +114,15 @@ public class ObjectPool : MonoBehaviour {
 				obstacles.Add(obj);
 				PooledAmount++;
 			}
-			else
+			else if(type == PrefabTypes.Root)
 			{
 				obj = (GameObject) Instantiate(PooledObject[RootObstacleStart]);
 				roots.Add(obj);
+			}
+			else
+			{
+				obj = (GameObject)Instantiate(PooledObject[RootObstacleStart + 1]);
+				eggs.Add(obj);
 			}
 			obj.SetActive(false);
 			return obj;

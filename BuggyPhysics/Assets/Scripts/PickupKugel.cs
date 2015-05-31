@@ -5,7 +5,6 @@ public class PickupKugel : MonoBehaviour
 {
 	EierDestroyer destroyer;
 	Rigidbody rigid;
-	Collider coll;
 	ParticleSystem particle;
 	Vector3 newPosition;
 	bool moveToPlayer;
@@ -14,7 +13,6 @@ public class PickupKugel : MonoBehaviour
 	{
 		destroyer = GameObject.Find ("DerEierDestroyer").GetComponent<EierDestroyer>();
 		rigid = this.GetComponent<Rigidbody>();
-		coll = this.GetComponent<Collider> ();
 		if (this.GetComponent<ParticleSystem> () != null) {
 			particle = this.GetComponent<ParticleSystem> ();
 		}

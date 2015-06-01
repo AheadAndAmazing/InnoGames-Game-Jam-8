@@ -1,5 +1,5 @@
 # InnoGames-Game-Jam-8
-This Game was made at Inno-Games Game Jam in May 2015.
+This Game was made at InnoGames Game Jam #8 in May 2015.
 It's called [Bugs Buggy](https://gamejam.innogames.com/jams/innogames-game-jam-8/51/) and is a physics-based Endless Runner.
 
 Team:
